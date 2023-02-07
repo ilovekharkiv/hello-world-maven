@@ -27,7 +27,7 @@ pipeline {
               
                 }
         }
-        stage("Deployment") {
+        stage("Deploy") {
             steps {
                 script {
                     my_groovy.deployStaging()     
