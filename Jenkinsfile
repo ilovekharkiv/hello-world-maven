@@ -1,38 +1,39 @@
+def my_groovy
 pipeline {
     agent {node 'jenkins_node'}
-    stages {
-         stage("test") {
-            steps {
-                script {
-                    echo "Testing the application"
-                    echo "Executing pipeline for branch $BRANCH_NAME" 
-                }
-            }
-        }
-        stage("build") {
-            when {
-                expression {
-                    BRANCH_NAME == 'master'
-                }
-            }
-            steps {
-                script {
-                    echo "Building the application"
-                }
-            }
-        }
-        stage("deploy") {
-            when {
-                expression {
-                    BRANCH_NAME == 'master'
-                }
-            }
-            steps {
-                script {
-                    echo "deploying the application"
-                }
-            }
-        }
+    tools {
+        maven 'maven-3.6.3'
     }
+    stages {
+        stage("Groovy Init") {
+            steps {
+                script {
+                    my_groovy = load "script.groovy"
+                }
+            }
+        }
+        stage("Build .jar") {
+            steps {
+                script {
+                    my_groovy.buildJar()
+                }
+            }
+        }
+        stage("Build Docker image") {    
+            steps {
+                script {
+                    my_groovy.buildDockerImage()
+                }
+              
+                }
+        }
+        stage("Deploy") {
+            steps {
+                script {
+                    my_groovy.deployStaging()     
+                }
+            }
+        }
+        }
         
-}
+    }
