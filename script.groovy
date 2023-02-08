@@ -1,7 +1,5 @@
 def buildJar() {
     echo "building the application...please wait"
-    sh 'mvn build-helper:parse-version versions:set \
-    - DnewVersion=\${parsedVersion.majorVersion}. \${parsedVersion.minorVersion}. \${parsedVersion.nextIncrementalVersion} versions:commit'
     sh 'mvn clean package'
     
 }
