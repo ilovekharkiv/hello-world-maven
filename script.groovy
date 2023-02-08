@@ -14,7 +14,7 @@ def buildDockerImage() {
 
 def deployStaging() {
     echo "deployment, please wait..."
-    sh "sleep 5"
+    sh "sleep 6"
 }
 
 return this
