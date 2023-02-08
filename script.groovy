@@ -1,6 +1,8 @@
 def buildJar() {
     echo "building the application...please wait"
-    sh 'mvn package'
+    sh 'mvn clean package'
+    sh 'mvn build-helper:parse-version versions:set \
+- DnewVersion=\${parsedVersion.majorVersion}. \${parsedVersion.minorVersion}. \${parsedVersion.nextIncrementalVersion} versions:commit'
 }
 
 def buildDockerImage() {
