@@ -5,10 +5,17 @@ pipeline {
         maven 'maven-3.6.3'
     }
     stages {
-        stage("Groovy Init") {
+        stage("Groovy Initialization") {
             steps {
                 script {
                     my_groovy = load "script.groovy"
+                }
+            }
+        }
+        stage("Increment Version") {
+            steps {
+                script {
+                    my_groovy.incrementJar()
                 }
             }
         }
