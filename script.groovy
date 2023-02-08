@@ -1,3 +1,9 @@
+def incrementJar() {
+    echo "Incrementing app vesion"
+    sh 'mvn build-helper:parse-versions:set \
+        -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.MinorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
+        versions:commit'
+}
 def buildJar() {
     echo "building the application...please wait"
     sh 'mvn package'
