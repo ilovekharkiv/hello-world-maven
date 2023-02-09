@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-        stage("commit new version update") {
+        stage("Commit new version pom.xml") {
             steps {
                 script {
                         my_groovy.pushNewpom()
