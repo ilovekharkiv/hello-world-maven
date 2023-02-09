@@ -44,12 +44,7 @@ pipeline {
         stage("commit new version update") {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: '937066cb-a19e-47cb-986f-8eb4879f86ac', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh "git remote set-url origin https://${USER}:${PASS}@github.com/ilovekharkiv/hello-world-maven.git"
-                    sh 'git add .'
-                    sh 'git commit -m "CI - version update"'
-                    sh 'git push origin HEAD:master'   
-                    }
+                        my_groovy.pushNewpom()
                     }
                 }
         }
