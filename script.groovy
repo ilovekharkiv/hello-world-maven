@@ -25,8 +25,8 @@ def buildDockerImage() {
 
 def deployStaging() {
     echo "deployment, please wait..."
-    sh "sleep 4"
-    echo "$IMAGE_NAME"
+    sh "sleep 3"
+    echo "${env.IMAGE_NAME}"
 }
 
 return this
