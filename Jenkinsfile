@@ -1,6 +1,6 @@
 def my_groovy
 pipeline {
-    agent any //{node 'jenkins_node'}
+    agent {node 'jenkins_node'}
     tools {
         maven 'maven-3.6.3'
     }
