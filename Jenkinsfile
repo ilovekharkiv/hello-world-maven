@@ -4,6 +4,9 @@ pipeline {
     tools {
         maven 'maven-3.6.3'
     }
+    environment {
+        EC2_INSTANCE_IP = '172.31.3.3'
+    }
     stages {
         stage("Groovy Init") {
             steps {
