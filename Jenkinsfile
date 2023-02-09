@@ -34,7 +34,7 @@ pipeline {
               
                 }
         }
-        stage("Deployment") {
+        stage("Deploy to EC2") {
             steps {
                 script {
                     my_groovy.deployStaging()     
