@@ -45,11 +45,6 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: '937066cb-a19e-47cb-986f-8eb4879f86ac', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh 'git config --global user.email "jenkins@example.com"'
-                    sh 'git config --global user.name "jenkins"'
-                    sh 'git status'
-                    sh 'git branch'
-                    sh 'git config --list'
                     sh "git remote set-url origin https://${USER}:${PASS}@github.com/ilovekharkiv/hello-world-maven.git"
                     sh 'git add .'
                     sh 'git commit -m "CI - version update"'
