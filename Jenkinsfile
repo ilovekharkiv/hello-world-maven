@@ -12,7 +12,7 @@ pipeline {
                 }
             }
         }
-        stage("Version increment") {
+        stage("Version incrementation") {
             steps {
                 script {
                     my_groovy.autoIncrement()
