@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage("Build Docker + Push") {
+        stage("Docker Build  + Push") {
             steps {
                 script {
                     my_groovy.buildDockerImage()
