@@ -12,6 +12,13 @@ pipeline {
                 }
             }
         }
+        stage("Version increment") {
+            steps {
+                script {
+                    my_groovy.autoIncrement()
+                }
+            }
+        }
         stage("Build .jar") {
             steps {
                 script {
