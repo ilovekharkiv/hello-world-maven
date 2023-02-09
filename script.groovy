@@ -1,8 +1,8 @@
 def autoIncrement() {
     echo "Autoincrementing app version. Please wait"
-    sh "mvn build-helper:parse-version versions:set \ 
+    sh 'mvn build-helper:parse-version versions:set \ 
     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \ 
-    versions:commit"
+    versions:commit'
     def parser = readFile('pom.xml') =~ '<version>(.+)</version>'
     def version = parser[0][1]
     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
