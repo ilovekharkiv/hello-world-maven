@@ -24,9 +24,11 @@ def buildDockerImage() {
 }
 
 def deployStaging() {
-    echo "deployment, please wait..."
-    sh "sleep 3"
-    echo "This is ${env.IMAGE_NAME}"
+        sshagent(['development_server']) {
+            def dockerCmd = 'docker run -p 8080:8080 -d ilovekharkiv/ilovekharkiv:myjava-1.0'
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@3.69.169.187 ${dockerCmd}"
+    }
+    
 }
 
 def pushNewpom() {
