@@ -9,7 +9,7 @@ def autoIncrement() {
 
 
 def buildJar() {
-    echo "building the application...please wait a sec"
+    echo "building the application...please wait"
     sh 'mvn package'
     
 }
