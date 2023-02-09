@@ -44,7 +44,7 @@ pipeline {
         stage("commit new version update") {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'PASS', usernameVariable: 'USER')])
+                    withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh 'git config --global user.email "jenkins@example.com"'
                     sh 'git config --global user.name "jenkins"'
                     sh 'git status'
@@ -54,8 +54,9 @@ pipeline {
                     sh 'git add .'
                     sh 'git commit -m "CI - version update"'
                     sh 'git push origin HEAD:master'   
+                    }
+                    }
                 }
-            }
         }
         }
         
