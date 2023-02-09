@@ -26,7 +26,7 @@ def buildDockerImage() {
 def deployStaging() {
     echo "deployment, please wait..."
     sh "sleep 3"
-    echo "${env.IMAGE_NAME}"
+    echo "This is ${env.IMAGE_NAME}"
 }
 
 def pushNewpom() {
@@ -34,7 +34,7 @@ def pushNewpom() {
                     sh "git remote set-url origin https://${USER}:${PASS}@github.com/ilovekharkiv/hello-world-maven.git"
                     sh 'git add .'
                     sh 'git commit -m "CI - version update"'
-                    sh 'git push origin HEAD:master'   
+                    sh 'git push origin HEAD:master'
                     }
 }
 return this
