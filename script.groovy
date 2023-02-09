@@ -25,7 +25,7 @@ def buildDockerImage() {
 
 def deployStaging() {
         sshagent(['development_server']) {
-            def dockerCmd = 'docker run -p 8080:8080 -d ilovekharkiv/ilovekharkiv:myjava-1.0'
+            def dockerCmd = 'docker run -p 80:8080 -d ilovekharkiv/ilovekharkiv:tomcat'
             sh "ssh -o StrictHostKeyChecking=no ubuntu@3.69.169.187 ${dockerCmd}"
     }
     
