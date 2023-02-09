@@ -41,6 +41,13 @@ pipeline {
                 }
             }
         }
+        stage("commit new version update") {
+            steps {
+                script {
+                    my_groovy.commitNewversion()     
+                }
+            }
+        }
         }
         
     }
