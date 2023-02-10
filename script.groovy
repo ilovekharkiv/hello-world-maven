@@ -24,7 +24,7 @@ def buildDockerImage() {
 }
 
 def deployStaging() {
-         def shellCmd = "bash ./server-cmds.sh $IMAGE_NAME"
+         def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
          def ec2dev = "ubuntu@172.31.3.3"
          sshagent(['development_server']) {
             sh "scp server-cmds.sh ${ec2dev}:/home/ubuntu"
