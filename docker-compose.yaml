@@ -1,11 +1,11 @@
 version: '3.3'
 services:
     hello-world-maven:
-      images: ${IMAGE}
+      image: ${IMAGE}
       ports:
         - 8080:8080
     postgres:
-      images: postgres:13
+      image: postgres:13
       ports:
         - 5432:5432
       environment:
