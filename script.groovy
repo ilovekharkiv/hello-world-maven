@@ -25,10 +25,11 @@ def buildDockerImage() {
 
 def deployStaging() {
          def shellCmd = "bash ./server-cmds.sh $IMAGE_NAME"
+         def ec2dev = "ubuntu@172.31.3.3"
          sshagent(['development_server']) {
-            sh "scp server-cmds.sh ubuntu@${EC2_DEV_IP}:/home/ubuntu"
-            sh "scp docker-compose.yaml ubuntu@${EC2_DEV_IP}:/home/ubuntu"
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@${EC2_DEV_IP} ${shellCmd}"
+            sh "scp server-cmds.sh ${ec2dev}:/home/ubuntu"
+            sh "scp docker-compose.yaml ${ec2dev}:/home/ubuntu"
+            sh "ssh -o StrictHostKeyChecking=no ${ec2dev} ${shellCmd}"
     }
     
 }
