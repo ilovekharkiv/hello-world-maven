@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    hello-world-maven:
+      image: ilovekharkiv/ilovekharkiv:myjava-1.0
+      ports:
+        - 8080:8080
+    postgres:
+      images: postgres:13
+      port: 
+        - 5432:5432
+      environment:
+        - POSTGRES_PASSWORD=my-pwd
