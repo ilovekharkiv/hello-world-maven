@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     hello-world-maven:
-      image: ilovekharkiv/ilovekharkiv:myjava-1.0
+      image: ${IMAGE}
       ports:
         - 8080:8080
     postgres:
