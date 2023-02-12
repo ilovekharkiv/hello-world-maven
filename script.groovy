@@ -28,7 +28,7 @@ def provisionInstance() {
         sh "terraform init -no-color"
         sh "terraform apply -no-color --auto-approve"
         EC2_PUBLIC_IP = sh (
-            script: "terraform apply -no-color --auto-approve",
+            script: "terraform output ec2_public_ip",
             returnStdout: true
         ).trim()
     }

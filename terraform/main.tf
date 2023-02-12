@@ -99,6 +99,6 @@ resource "aws_instance" "development" {
     }
 }
 
-output "ec2_public_ips" {
+output "ec2_public_ip" {
     value = aws_instance.development.public_ip
 }
