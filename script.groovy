@@ -24,6 +24,11 @@ def buildDockerImage() {
 }
 
 def provisionInstance() {
+    environment {
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY_ID = credentials('AWS_SECRET_ACCESS_KEY_ID')
+                TF_VAR_env_prefix = 'test'
+            }
     dir('terraform') {
         sh "terraform init -no-color"
         sh "terraform apply -no-color --auto-approve"
@@ -35,6 +40,10 @@ def provisionInstance() {
 }
 
 def deployStaging() {
+        environment {
+            DOCKER_CREDS = credentials('dockerhub')
+        }
+
         echo "Waiting for ec2-instance init"
         sleep(time: 90, unit: "SECONDS")
 

@@ -1,2 +1,4 @@
 target
 .idea
+.terraform.lock.hcl
+*.tfstate.*
