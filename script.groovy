@@ -25,10 +25,10 @@ def buildDockerImage() {
 
 def provisionInstance() {
     dir('terraform') {
-        sh "terraform init"
-        sh "terraform apply --auto-approve"
+        sh "terraform init -no-color"
+        sh "terraform apply -no-color --auto-approve"
         EC2_PUBLIC_IP = sh (
-            script: "terraform apply --auto-approve",
+            script: "terraform apply -no-color --auto-approve",
             returnStdout: true
         ).trim()
     }
