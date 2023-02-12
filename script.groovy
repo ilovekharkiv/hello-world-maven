@@ -28,7 +28,7 @@ def provisionInstance() {
         sh "terraform init"
         sh "terraform apply --auto-approve"
         EC2_PUBLIC_IP = sh (
-            script: "terraform apply --auto-approve"
+            script: "terraform apply --auto-approve",
             returnStdout: true
         ).trim()
     }
