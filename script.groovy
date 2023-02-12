@@ -38,7 +38,7 @@ def deployStaging() {
         echo "Waiting for ec2-instance init"
         sleep(time: 90, unit: "SECONDS")
 
-        echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC}"
+        echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC_IP}"
 
         def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
         def ec2dev = "ubuntu@${EC2_PUBLIC_IP}"
