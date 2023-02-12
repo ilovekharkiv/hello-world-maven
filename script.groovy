@@ -41,7 +41,7 @@ def deployStaging() {
         echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC_IP}"
 
         def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
-        def ec2dev = "ubuntu@${EC2_PUBLIC_IP}"
+        def ec2dev = "ec2-user@${EC2_PUBLIC_IP}"
         sshagent(['dev-server-ssh-key']) {
             sh "scp -o StrictHostKeyChecking=no server-cmds.sh ${ec2dev}:/home/ec2-user"
             sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ec2dev}:/home/ec2-user"
