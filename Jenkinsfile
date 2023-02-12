@@ -42,6 +42,9 @@ pipeline {
             }
         }
         stage("Deploy to EC2") {
+            environment {
+                DOCKER_CREDS = credentials('dockerhub')
+            }
             steps {
                 script {
                     my_groovy.deployStaging()     
