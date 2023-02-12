@@ -98,7 +98,7 @@ resource "aws_instance" "development" {
         type = "ssh"
         host = self.public_ip
         user = "ec2-user"
-        private_key = file(var.private_key_location)
+        //private_key = file(var.private_key_location)
     }
     
     provisioner "file" {
