@@ -23,12 +23,28 @@ def buildDockerImage() {
 }
 }
 
+def provisionInstance() {
+    dir('terraform') {
+        sh "terraform init"
+        sh "terraform apply --auto-approve"
+        EC2_PUBLIC_IP = sh (
+            script: "terraform apply --auto-approve"
+            returnStdout: true
+        ).trim()
+    }
+}
+
 def deployStaging() {
-         def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
-         def ec2dev = "ubuntu@172.31.3.3"
-         sshagent(['development_server']) {
-            sh "scp server-cmds.sh ${ec2dev}:/home/ubuntu"
-            sh "scp docker-compose.yaml ${ec2dev}:/home/ubuntu"
+        echo "Waiting for ec2-instance init"
+        sleep(time: 90, unit: "SECONDS")
+
+        echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC}"
+
+        def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
+        def ec2dev = "ubuntu@${EC2_PUBLIC_IP}"
+        sshagent(['dev-server-ssh-key']) {
+            sh "scp -o StrictHostKeyChecking=no server-cmds.sh ${ec2dev}:/home/ubuntu"
+            sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ec2dev}:/home/ubuntu"
             sh "ssh -o StrictHostKeyChecking=no ${ec2dev} ${shellCmd}"
     }
     

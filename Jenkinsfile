@@ -34,6 +34,18 @@ pipeline {
               
                 }
         }
+        stage("Instance provisioning") {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY_ID = credentials('AWS_SECRET_ACCESS_KEY_ID')
+                TF_VAR_env_prefix = 'test'
+            }
+            steps {
+                script {
+                    my_groovy.provisionInstance()     
+                }
+            }
+        }
         stage("Deploy to EC2") {
             steps {
                 script {
