@@ -55,6 +55,11 @@ def deployStaging() {
     
 }
 
+def destroyInfrastructure() {
+    sh 'terraform destroy --auto-approve -no-color'
+    input('Do you want to proceed?')
+}
+
 def pushNewpom() {
     withCredentials([usernamePassword(credentialsId: '937066cb-a19e-47cb-986f-8eb4879f86ac', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "git remote set-url origin https://${USER}:${PASS}@github.com/ilovekharkiv/hello-world-maven.git"
