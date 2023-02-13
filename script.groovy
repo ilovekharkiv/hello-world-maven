@@ -64,9 +64,4 @@ def pushNewpom() {
                     }
 }
 
-def destroyInstance() {
-    input('Do you want to proceed?')
-    sh 'terraform destroy --auto-approve -no-color'
-}
-
 return this
