@@ -59,7 +59,7 @@ pipeline {
                     }
                 }
         }
-        stage('Input') {
+        stage('Destroy Infrustructure') {
             steps {
                 script {
                     my_groovy.destroyInstance()
