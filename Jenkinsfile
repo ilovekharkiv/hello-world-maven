@@ -51,22 +51,14 @@ pipeline {
                 }
             }
         }
-        stage("Destroy Infrastructure") {
-            steps {
-                script {
-                    my_groovy.destroyInfrastructure()     
-                }
-            }
-        }
-        
-        /*stage("Commit new version pom.xml") {
+                
+        stage("Commit new version pom.xml") {
             steps {
                 script {
                         my_groovy.pushNewpom()
                     }
                 }
         }
-        }*/
+        }
         
     }
-}
