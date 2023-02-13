@@ -63,4 +63,10 @@ def pushNewpom() {
                     sh 'git push origin HEAD:master'
                     }
 }
+
+def destroyInstance() {
+    input('Do you want to proceed?')
+    sh 'terraform destroy --auto-approve -no-color'
+}
+
 return this

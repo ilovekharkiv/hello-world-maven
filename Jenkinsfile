@@ -59,6 +59,13 @@ pipeline {
                     }
                 }
         }
+        stage('Input') {
+            steps {
+                script {
+                    my_groovy.destroyInstance()
+                }
+            }
         }
-        
+        }
+           
     }
