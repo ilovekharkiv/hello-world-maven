@@ -1,3 +1,12 @@
+terraform {
+    required_version = ">= 1.3"
+    backend "s3" {
+        bucket = "hello-maven-bucket"
+        key = "hello-maven/state.tfstate"
+        region = "eu-west-1"
+    }
+}
+
 provider "aws" {
     region = var.region
 }
