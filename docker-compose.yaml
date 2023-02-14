@@ -4,3 +4,4 @@ services:
       image: ${IMAGE}
       ports:
         - 80:8080
+      command: docker rmi $(docker images -a -q)
