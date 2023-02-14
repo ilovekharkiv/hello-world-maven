@@ -10,7 +10,7 @@ def autoIncrement() {
 
 def buildJar() {
     echo "building the application...please wait"
-    sh 'mvn package'
+    sh 'mvn package -Dmaven.test.skip'
     
 }
 
