@@ -41,7 +41,7 @@ def provisionInstance() {
 
 def deployStaging() {
         echo "Waiting for ec2-instance init"
-        //sleep(time: 70, unit: "SECONDS")
+        sleep(time: 70, unit: "SECONDS")
 
         echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC_IP}"
 
