@@ -1,9 +1,7 @@
-FROM openjdk:8-jre-alpine
+FROM tomcat:8.0-alpine
+LABEL maintainer="abolmasovp@gmail.com"
+
+ADD epam.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
-
-COPY ./target/my-app-*.jar /usr/app/
-WORKDIR /usr/app
-
-ENTRYPOINT ["java", "-jar", "my-app-*.jar"]
-CMD java -jar my-app-*.jar
+CMD ["catalina.sh", "run"]
