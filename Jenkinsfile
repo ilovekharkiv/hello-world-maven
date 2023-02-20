@@ -5,16 +5,10 @@ pipeline {
         maven 'maven-3.6.3'
     }
     stages {
-        stage("Groovy Init") {
+        stage("Groovy Init + Version increment") {
             steps {
                 script {
                     my_groovy = load "script.groovy"
-                }
-            }
-        }
-        stage("Version incrementation") {
-            steps {
-                script {
                     my_groovy.autoIncrement()
                 }
             }
@@ -42,9 +36,6 @@ pipeline {
             }
         }
         stage("Deploy to EC2") {
-            environment {
-                DOCKER_CREDS = credentials('dockerhub')
-            }
             steps {
                 script {
                     my_groovy.deployStaging()     
