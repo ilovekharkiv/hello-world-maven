@@ -39,7 +39,7 @@ def provisionInstance() {
     }
 }
 
-def deployStaging() {
+/*def deployStaging() {
         echo "Waiting for ec2-instance init"
         sleep(time: 70, unit: "SECONDS")
 
@@ -53,7 +53,7 @@ def deployStaging() {
             sh "ssh -o StrictHostKeyChecking=no ${ec2dev} ${shellCmd}"
     }
     
-}
+}*/
 
 def runAnsible() {
         dir('ansible') {

@@ -35,7 +35,7 @@ pipeline {
                 }
             }
         }
-        stage("Deploy to EC2") {
+        /*stage("Deploy to EC2") {
             environment {
                     DOCKER_CREDS = credentials('dockerhub')
                 }
@@ -44,7 +44,7 @@ pipeline {
                     my_groovy.deployStaging()     
                 }
             }
-        }
+        }*/
         stage("Run Ansible playbook") {
                 steps {
                         script {
