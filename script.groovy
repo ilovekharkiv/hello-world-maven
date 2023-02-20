@@ -40,9 +40,6 @@ def provisionInstance() {
 }
 
 def deployStaging() {
-        environment {
-                    DOCKER_CREDS = credentials('dockerhub')
-                }
         echo "Waiting for ec2-instance init"
         sleep(time: 70, unit: "SECONDS")
 

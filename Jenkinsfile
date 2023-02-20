@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage("Build .jar") {
+        stage("Build .war file - epam.war") {
             steps {
                 script {
                     my_groovy.buildJar()
@@ -37,6 +37,9 @@ pipeline {
         }
         stage("Deploy to EC2") {
             steps {
+                environment {
+                    DOCKER_CREDS = credentials('dockerhub')
+                }
                 script {
                     my_groovy.deployStaging()     
                 }
