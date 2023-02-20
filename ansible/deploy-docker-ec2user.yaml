@@ -54,6 +54,10 @@
     - name: Reconnect to the server
       meta: reset_connection
 
+- name: Clean all containers and images and volumes
+  ansible.builtin.command: 
+    cmd: docker system prune -a -f
+
 - name: Start docker containers
   hosts: all
   vars_files:
@@ -64,8 +68,6 @@
         registry_url: https://index.docker.io/v1/
         username: ilovekharkiv
         password: "{{docker_password}}"
-    - name: Clean all containers and images and volumes
-      ansible.builtin.command: docker system prune -a -f
     - name: Run java maven container
       docker_container:
         name: ilovekharkiv
