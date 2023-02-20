@@ -44,6 +44,7 @@
 
 - name: Clean all containers and images and volumes
   hosts: all
+  become: yes
   tasks:
     - name: Clean all containers + images 
       shell: 
