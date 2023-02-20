@@ -39,26 +39,10 @@ def provisionInstance() {
     }
 }
 
-/*def deployStaging() {
-        echo "Waiting for ec2-instance init"
-        sleep(time: 70, unit: "SECONDS")
-
-        echo "Deploying docker image to EC2 instance. Public IP - ${EC2_PUBLIC_IP}"
-
-        def shellCmd = "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
-        def ec2dev = "ec2-user@${EC2_PUBLIC_IP}"
-        sshagent(['dev-server-ssh-key']) {
-            sh "scp -o StrictHostKeyChecking=no server-cmds.sh ${ec2dev}:/home/ec2-user"
-            sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ${ec2dev}:/home/ec2-user"
-            sh "ssh -o StrictHostKeyChecking=no ${ec2dev} ${shellCmd}"
-    }
-    
-}*/
-
 def runAnsible() {
             dir('ansible') {
             withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-            sh "echo $PASS | ansible-playbook --inventory ${EC2_PUBLIC_IP}, --private-key /home/ubuntu/.ssh/ansible_server.pem --user ec2-user deploy-docker-ec2user.yaml -e docker_password=$PASS -e docker_image=$IMAGE_NAME -vv"
+            sh "echo $PASS | ansible-playbook --inventory ${EC2_PUBLIC_IP}, --private-key /home/ubuntu/.ssh/ansible_server.pem --user ec2-user deploy-docker-ec2user.yaml -e docker_password=$PASS -e docker_image=$IMAGE_NAME"
 
         }                     
     }
