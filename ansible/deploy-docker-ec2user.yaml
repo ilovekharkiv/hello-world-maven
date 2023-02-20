@@ -74,8 +74,11 @@
        # state: present #docker compose up
     - name: Run java maven container
       docker_container:
-        name: db_test
+        name: ilovekharkiv
         image: "ilovekharkiv/ilovekharkiv:{{docker_image}}"
+        state: present
+        ports:
+          - "8080:80"
         
 
 
