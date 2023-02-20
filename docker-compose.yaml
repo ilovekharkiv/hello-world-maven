@@ -1,6 +1,6 @@
 version: '3.3'
 services:
     hello-world-maven:
-      image: ${IMAGE}
+      image: $IMAGE_NAME
       ports:
         - 80:8080
