@@ -8,7 +8,7 @@ def autoIncrement() {
 
 
 
-def buildJar() {
+def buildWar() {
     echo "building the application...please wait"
     sh 'mvn package -Dmaven.test.skip'
     
@@ -59,7 +59,7 @@ def runAnsible() {
         sh "sed 's/image_name/$IMAGE_NAME/g' docker-compose.yaml"
         dir('ansible') {
             withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-            sh "echo $PASS | ansible-playbook --inventory ${EC2_PUBLIC_IP}, --private-key /home/ubuntu/.ssh/ansible_server.pem --user ec2-user deploy-docker-ec2user.yaml --extra-vars docker_password=$PASS"
+            sh "echo $PASS | ansible-playbook --inventory ${EC2_PUBLIC_IP}, --private-key /home/ubuntu/.ssh/ansible_server.pem --user ec2-user deploy-docker-ec2user.yaml --extra-vars docker_password=$PASS, docker_image=$IMAGE_NAME"
 
         }                     
     }

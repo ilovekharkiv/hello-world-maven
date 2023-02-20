@@ -68,10 +68,15 @@
         registry_url: https://index.docker.io/v1/
         username: ilovekharkiv
         password: "{{docker_password}}"
-    - name: Start containers via docker-compose
-      docker_compose: 
-        project_src: /home/ec2-user
-        state: present #docker compose up
+    #- name: Start containers via docker-compose
+     # docker_compose: 
+      #  project_src: /home/ec2-user
+       # state: present #docker compose up
+    - name: Run java maven container
+      docker_container:
+        name: db_test
+        image: "ilovekharkiv/ilovekharkiv:{{docker_image}}"
+        
 
 
 

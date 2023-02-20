@@ -16,7 +16,7 @@ pipeline {
         stage("Build .war file - epam.war") {
             steps {
                 script {
-                    my_groovy.buildJar()
+                    my_groovy.buildWar()
                 }
             }
         }
