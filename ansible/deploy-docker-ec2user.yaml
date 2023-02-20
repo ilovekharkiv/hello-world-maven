@@ -42,14 +42,6 @@
           - docker
           - docker-compose
 
-- name: Clean all containers and images and volumes
-  hosts: all
-  become: yes
-  tasks:
-    - name: Clean all containers + images 
-      shell: 
-        cmd: docker system prune -a -f
-
 - name: Add ec2-user to docker group
   hosts: all
   become: yes
@@ -61,6 +53,13 @@
         append: yes
     - name: Reconnect to the server
       meta: reset_connection
+
+- name: Clean all containers and images and volumes
+  hosts: all
+  tasks:
+    - name: Clean all containers + images 
+      shell: 
+        cmd: docker system prune -a -f
 
 - name: Start docker containers
   hosts: all
