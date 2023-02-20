@@ -45,8 +45,8 @@
 - name: Clean all containers and images and volumes
   hosts: all
   tasks:
-    -name: CLean all containers + images 
-     ansible.builtin.command: docker system prune -a -f
+    - name: Clean all containers + images 
+      ansible.builtin.shell: docker system prune -a -f
 
 - name: Add ec2-user to docker group
   hosts: all
