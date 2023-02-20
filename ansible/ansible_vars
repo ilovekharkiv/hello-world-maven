@@ -1,0 +1,3 @@
+linux_name: ubuntu
+user_home_dir: /home/{{linux_name}}
+user_groups: "adm,docker"

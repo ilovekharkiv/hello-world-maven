@@ -45,7 +45,13 @@ pipeline {
                 }
             }
         }
-                
+        stage("Run Ansible playbook") {
+                steps {
+                        script {
+                            my_groovy.runAnsible()
+                        }
+                      }
+                    }    
         stage("Commit new version pom.xml") {
             steps {
                 script {

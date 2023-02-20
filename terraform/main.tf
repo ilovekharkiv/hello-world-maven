@@ -99,10 +99,8 @@ resource "aws_instance" "development" {
     vpc_security_group_ids = [aws_default_security_group.default-sg.id]
     availability_zone = var.avail_zone
     associate_public_ip_address = true
-    key_name = "dev-server"
-
-    user_data = file("entry-script.sh")
-  
+    key_name = "ansible_server"
+     
     tags = {
         Name: "${var.env_prefix}-server"
     }
