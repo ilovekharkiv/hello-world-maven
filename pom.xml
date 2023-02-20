@@ -4,7 +4,7 @@
   <groupId>epam</groupId>
   <artifactId>epam</artifactId>
   <packaging>war</packaging>
-  <version>1.0.33</version>
+  <version>1.0.34</version>
   <name>epam Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
