@@ -56,9 +56,9 @@ def provisionInstance() {
 }*/
 
 def runAnsible() {
-        sh "echo ${IMAGE_NAME}"
-        sh "bash ./server-cmds.sh ilovekharkiv/ilovekharkiv:$IMAGE_NAME"
+        
         dir('ansible') {
+            sh "sed 's/image_name/$IMAGE_NAME/g' docker-compose.yaml"
             withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
             sh "echo $PASS | ansible-playbook --inventory ${EC2_PUBLIC_IP}, --private-key /home/ubuntu/.ssh/ansible_server.pem --user ec2-user deploy-docker-ec2user.yaml --extra-vars docker_password=$PASS"
 
