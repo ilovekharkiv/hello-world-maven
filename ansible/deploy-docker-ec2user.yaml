@@ -59,19 +59,13 @@
   vars_files:
     - ansible_vars
   tasks:
-   # - name: Copy docker compose file
-    #  copy: 
-     #   src: /home/ubuntu/workspace/final_project_epam_master/docker-compose.yaml
-      #  dest: /home/ec2-user
     - name: Docker login
       docker_login:
         registry_url: https://index.docker.io/v1/
         username: ilovekharkiv
         password: "{{docker_password}}"
-    #- name: Start containers via docker-compose
-     # docker_compose: 
-      #  project_src: /home/ec2-user
-       # state: present #docker compose up
+    - name: Clean all containers and images and volumes
+      ansible.builtin.command: docker system prune -a -f
     - name: Run java maven container
       docker_container:
         name: ilovekharkiv
